@@ -108,7 +108,11 @@ function empezar_simulacion() {
     slider_angulo.disabled = true;
     input_escala.disabled = true;
     boton_inicio.classList.add('d-none');
+    botonIniciarJuego.classList.add('d-none');
     boton_pausar.classList.remove('d-none');
+    if (!juegoActivo) {
+      boton_reset.classList.remove('d-none');
+    }
 
     // Calcular componentes de velocidad inicial
     const componentes = calcular_componentes_velocidad_proyectil(v_inicial, angulo);
@@ -134,6 +138,10 @@ function reiniciar_simulacion() {
   slider_angulo.disabled = false;
   input_escala.disabled = false;
   boton_inicio.classList.remove('d-none');
+  if (!juegoActivo) {
+    botonIniciarJuego.classList.remove('d-none');
+  }
+  boton_reset.classList.add('d-none');
   boton_pausar.classList.add('d-none');
   boton_continuar.classList.add('d-none');
 
